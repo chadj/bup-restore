@@ -1,0 +1,98 @@
+#treetable {
+    table-layout: fixed;
+}
+
+/* #treetable tr td:nth-of-type(1) {
+    text-align: right;
+} */
+
+#treetable tr td:nth-of-type(1) {
+    text-align: center;
+}
+
+#treetable tr td:nth-of-type(2) {
+    min-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#treetable tr td:nth-of-type(3) {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#treetable tr td:nth-of-type(4) {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* .fancytree-plain.fancytree-container span.fancytree-title:hover {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.fancytree-plain.fancytree-container.fancytree-treefocus span.fancytree-node.fancytree-focused span.fancytree-title {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.fancytree-plain.fancytree-container.fancytree-treefocus span.fancytree-node.fancytree-active:hover span.fancytree-title {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.fancytree-plain.fancytree-container.fancytree-treefocus span.fancytree-node.fancytree-active span.fancytree-title {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.fancytree-plain.fancytree-container span.fancytree-node.fancytree-active span.fancytree-title {
+    background: transparent;
+    border-color: transparent;
+    color: #333;
+} */
+
+table.fancytree-ext-table.fancytree-treefocus.fancytree-container.table-hover>tbody>tr.fancytree-active:hover>td {
+    background: inherit;
+}
+
+table.fancytree-ext-table.fancytree-treefocus.fancytree-container>tbody>tr.fancytree-active:hover>td {
+    background: inherit;
+}
+
+table.fancytree-ext-table.fancytree-treefocus.fancytree-container>tbody>tr.fancytree-active>td {
+    background: inherit;
+}
+
+table.fancytree-ext-table.fancytree-container>tbody>tr.fancytree-active>td {
+    background: inherit;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background: #f9f9f9;
+}
+
+.table-striped>tbody>tr:nth-of-type(even) {
+    background: #fff;
+}
+
+.fancytree-plain.fancytree-container.fancytree-ext-wide span.fancytree-node.fancytree-active, table.fancytree-ext-table.fancytree-colorize-selected>tbody>tr.fancytree-selected>td, table.fancytree-ext-table.fancytree-colorize-selected>tbody>tr.fancytree-selected>td span.fancytree-title, table.fancytree-ext-table.fancytree-container>tbody>tr.fancytree-active>td, table.fancytree-ext-table.fancytree-container>tbody>tr.fancytree-active>td span.fancytree-title {
+    color: #333;
+}
+
+ul.fancytree-container {
+    border: inherit;
+}
+
+#ui-menu {
+    padding-top: 5px;
+}
+
+.ui-col {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#progress-indicator {
+    display: none
+}
