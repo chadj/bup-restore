@@ -10,6 +10,8 @@ const moment = require('moment');
 const mainPath = path.resolve(__dirname, 'main.js');
 const mainProcess = remote.require(mainPath);
 
+const MAX_BUFFER = 32 * 1024 * 1024;
+
 function bup_sort_entries(entries) {
   entries.sort((a, b) => {
     if (a.folder && !b.folder) {
@@ -123,7 +125,7 @@ async function entriesFromCommitAndPath(node) {
   const commit = node.data.commit;
   const basepath = node.data.path;
 
-  const cmd_output = await execFile("/usr/local/bin/git", ['-C', '/Users/chadj/.bup', 'diff-tree', '--no-commit-id', '--name-only', '-r', commit]);
+  const cmd_output = await execFile("/usr/local/bin/git", ['-C', '/Users/chadj/.bup', 'diff-tree', '--no-commit-id', '--name-only', '-r', commit], {maxBuffer: MAX_BUFFER});
   let lines = cmd_output.stdout.split('\n');
   lines = lines.filter(_ => _ !== '').map(_ => _.split(/\.bup[m\/]/, 2)[0]).filter(_ => _ != '' && !_.endsWith('/'));
 
@@ -172,7 +174,7 @@ async function entriesFromCommitAndPath(node) {
 }
 
 async function bup_source() {
-  const cmd_output = await execFile("/usr/local/bin/bup", ['ls', '-Al', '--file-type']);
+  const cmd_output = await execFile("/usr/local/bin/bup", ['ls', '-Al', '--file-type'], {maxBuffer: MAX_BUFFER});
   let lines = cmd_output.stdout.split('\n');
   lines = lines.filter(_ => _ !== '');
 
@@ -192,7 +194,7 @@ async function bup_lazyLoad(event, data) {
   } else {
     let path = node_key_path(data.node, '');
 
-    const cmd_output = await execFile("/usr/local/bin/bup", ['ls', '-Al', '--file-type', path]);
+    const cmd_output = await execFile("/usr/local/bin/bup", ['ls', '-Al', '--file-type', path], {maxBuffer: MAX_BUFFER});
     let lines = cmd_output.stdout.split('\n');
     lines = lines.filter(_ => _ !== '');
 
@@ -241,7 +243,7 @@ async function bup_clickPaging(event, data) {
   const current_node = data.node.data.continueNode;
   let path = node_key_path(current_node, '');
 
-  const cmd_output = await execFile("/usr/local/bin/bup", ['ls', '-AlF', path]);
+  const cmd_output = await execFile("/usr/local/bin/bup", ['ls', '-AlF', path], {maxBuffer: MAX_BUFFER});
   let lines = cmd_output.stdout.split('\n');
   lines = lines.filter(_ => _ !== '');
 
@@ -259,7 +261,7 @@ async function bup_clickPaging(event, data) {
 }
 
 async function bup_restore(restorePoint, toRestorePaths) {
-  const cmd_output = await execFile("/usr/local/bin/bup", ['restore', '-C', restorePoint].concat(toRestorePaths));
+  const cmd_output = await execFile("/usr/local/bin/bup", ['restore', '-C', restorePoint].concat(toRestorePaths), {maxBuffer: MAX_BUFFER});
 }
 
 function bup_source_wrapper() {
