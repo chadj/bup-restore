@@ -54,7 +54,7 @@
         "electron-compile": "^6.4.4",
         "electron-squirrel-startup": "^1.0.0",
         "electron-traywindow-positioner": "0.0.2",
-        "moment": "^2.24.0"
+        "moment": "^2.29.2"
     },
     "devDependencies": {
         "babel-plugin-transform-async-to-generator": "^6.24.1",
